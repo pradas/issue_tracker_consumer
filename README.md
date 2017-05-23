@@ -1,5 +1,4 @@
-
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
+,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
     '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
     |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
     '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
@@ -20,3 +19,19 @@ This chat example showcases how to use `socket.io` with a static `express` serve
     $ node server.js
 
 Once the server is running, open the project in the shape of 'https://projectname-username.c9users.io/'. As you enter your name, watch the Users list (on the left) update. Once you press Enter or Send, the message is shared with all connected clients.
+
+
+# README
+
+Equip de desenvolupament:
+
+* Adrián Borrego Martínez
+* Gerard Pradas San José
+* Joan Pagès Esbri
+* Adrián Ruiz Cordón
+
+http://fast-lake-76623.herokuapp.com/
+
+[API especificada amb swagger](https://drive.google.com/file/d/0B7BMaLyaJJnXYUJBTTFlM1BIVEU/view?usp=sharing)
+
+API Token: 110490905416396817633
