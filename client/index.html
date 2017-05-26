@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="css/index.css">
 
     <script>
       function aController($scope) {
@@ -37,21 +39,35 @@
       </div>
     </div>
   </nav>
-  <body>
+  <body ng-app='IssueTracker'>
     <div class="container">
       <div class="row">
         <div class="col-md-10 col-sm-10">
           <h1>Issues</h1>
         </div>        
         <div class="col-md-2 col-sm-2">
-          Create Issue
+          <a class="btn btn-default btn-block" href="#create">Create Issue</a>
         </div>
       </div>
     </div>
 
 Hola
 
-  </body>
+<div ng-view></div>
+
+  <script>
+    var app = angular.module("IssueTracker", ["ngRoute"]);
+    app.config(function($routeProvider) {
+        $routeProvider
+        .when("/", {
+            templateUrl : "index.html"
+        })
+        .when("/create", {
+            templateUrl : "create.html"
+        });
+    });
+  </script>
+</body>
   
   
   
@@ -114,6 +130,8 @@ Hola
 
     <!-- Angular library -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-route.js"></script>
+
     
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
