@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app>
+<html lang="en" ng-app='myApp'>
   <head>
     <title>Chat Example</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,22 +8,18 @@
     
     <link rel="stylesheet" href="css/index.css">
 
-    <script>
-      function aController($scope) {
+    <!-- Angular library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-route.js"></script>
+    <script src="index_controller.js"></script>
 
-      }
-    </script>
+    
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
   </head>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
     <nav class="navbar navbar-inverse navbar-static-top">
     <div class="container">
@@ -39,7 +35,7 @@
       </div>
     </div>
   </nav>
-  <body ng-app='IssueTracker'>
+  <body ng-controller='mainController'>
     <div class="container">
       <div class="row">
         <div class="col-md-10 col-sm-10">
@@ -53,20 +49,10 @@
 
 Hola
 
-<div ng-view></div>
-
-  <script>
-    var app = angular.module("IssueTracker", ["ngRoute"]);
-    app.config(function($routeProvider) {
-        $routeProvider
-        .when("/", {
-            templateUrl : "index.html"
-        })
-        .when("/create", {
-            templateUrl : "create.html"
-        });
-    });
-  </script>
+  <div id="index_controller">
+      
+      <div ng-view></div> 
+  </div>
 </body>
   
   
@@ -128,15 +114,6 @@ Hola
     </div>
     -->
 
-    <!-- Angular library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-route.js"></script>
-
     
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
   </body>
 </html>
