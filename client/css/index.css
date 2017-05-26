@@ -1,3 +1,13 @@
 .bold-text{
     font-weight: bold !important;
 }
+
+.formfield, .movedown{
+    padding-top: 10px;
+}
+
+.label-dropdown{
+    position: relative;
+    text-align: left;
+    word-wrap: break-word;
+}
