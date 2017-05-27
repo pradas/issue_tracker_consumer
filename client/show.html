@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en" ng-app='myApp'>
+  <head>
+    <title>Chat Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="css/index.css">
+
+    <!-- Angular library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-route.js"></script>
+    <script src="index_controller.js"></script>
+
+    
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+  </head>
+    <nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+      <div class="navbar-header">
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><%= link_to 'Issues Tracker', issues_path %>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a id="username-navbar"><strong>Pepe</strong></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <body>
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-8">
+          <span class="issue-id">
+              Issue  #1
+          </span>
+            <span class="label label-success">Status</span>
+          </a>
+        </div>
+        <div class="col-xs-1">
+          <button type="button" class="btn btn-primary">Open/Resolve</button>
+        </div>
+        <div class="col-xs-1">
+          <div class="form-group">
+            <select class="form-control" id="status">
+              <option>new</option>
+              <option>open</option>
+              <option>on hold</option>
+              <option>duplicate</option>
+              <option>invalid</option>
+              <option>wontfix</option>
+              <option>closed</option>
+              <option>resolve</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-xs-1">
+          <div class="form-group">
+            <select class="form-control" id="more">
+              <option>Delete</option>
+              <option>Attach files</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-xs-1">
+          <button type="button" class="btn btn-primary">Edit</button>
+        </div
+      </div>
+      
+      <div class="row">
+        <div class="col-xs-8">
+          <h3 id="issue-title">Issue Title</h3>
+          <div class="issue-author">
+            <a>
+              <span title=@issue.user.name >Issue Author</span>
+            </a>
+            created an issue
+            <time>a tal hora</time>
+          </div>
+          <div class="issue-description wiki-content desc-break">
+              <p>
+                La descripción de la issue
+              </p>
+          </div>
+          <hr>
+          
+          <!-- Attachments -->
+          <div class="attachments" id="attachments">
+            <table class = "table table-bordered table-striped">
+               <thead>
+                  <tr>
+                     <th width="85%">File</th>
+                     <th width="15%">Options</th>
+                  </tr>
+               </thead>
+               
+               <tbody>
+                     <tr>
+                        <td>Resume 1</td>
+                        <td>
+                          <button type="button" class="btn btn-primary">Download</button>
+                          <button type="button" class="btn btn-danger">Delete</button>
+                        </td>
+                     </tr>
+               </tbody>
+            </table>
+          </div>
+          <!-- Fin attachments -->
+          
+          <!--Comentarios -->
+          <hr>
+          <div id="issues-comments-container">
+          <h3>Comments (nComments)</h3>
+          <div id="issues-comments">
+              <div class="row issue-comment comment">
+                <div class="col-xs-1">
+                  <img src="https://bitbucket.org/account/pradas/avatar/32/?ts=1492956548" height="38" width="38" alt="">
+                </div>
+                <div class="col-xs-11">
+                  <div class="row">
+                    <p>
+                      <b>Adri></b>
+                    </p>
+                    <div class="comment-<%= comment.id %>">
+                      <p>
+                        Ei k pasa
+                      </p>
+                    </div>
+                  </div>
+                    <div class="row">
+                      <ul class="list-inline">
+                          <li>
+                            <a href="#edit" class="edit-comment-link" onclick="$('.comment-<%= comment.id %>').toggle();">
+                              Edit
+                            </a>
+                          </li>
+                        <li>
+                          <a class="comment-pin-link" href="#comment-pin">
+                              Pin
+                          </a>
+                        </li>
+                        <li>
+                          <a href="/issues/<%= @issue.id.to_s %>/comments/<%= comment.id.to_s %>" onclick="confirm('Are you sure that you wish to delete this comment?')">Delete</a>
+                        </li>
+                        <li>
+                          <a>
+                            <time datetime="<%=comment.created_at %>" >11 hours ago</time>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                </div>
+                </div>
+          </div>
+          
+          <!-- Formulario comentario 
+          <hr>
+          <% if current_user != nil %>
+            <div class="row">
+              <div class="col-xs-1">
+                <img src="https://bitbucket.org/account/pradas/avatar/32/?ts=1492956548" height="38" width="38" alt="">
+              </div>
+              <div class="col-xs-7">
+                <%= render 'comments/form', issue: @issue, comment: @comment %>
+              </div>
+            </div>
+          <% end %>
+        </div>  
+        -->
+        
+        <!-- Fin comentarios -->
+        
+        </div>
+        
+        <div class="col-xs-4">
+          <div class="panel panel-default col-offset-8">
+            <div class="panel-body">      
+              <div class="aui-item sidebar">
+                <div class="issue-attrs">
+                <dl>
+                  <dt>Assignee</dt>
+                  <span class="glyphicon glyphicon-user"></span><text> </text>Tito MC
+                </dl>
+                <dl>
+                  <dt>Type</dt>
+                    task
+                </dl>
+                <dl>
+                  <dt>Priority</dt>
+                    critical
+                </dl>
+                <dl>
+                  <dt>Status</dt>
+                    resolved
+                </dl>
+                <dl>
+                  <dt>Votes</dt>
+                    <div class="row">
+                      <div class="col-xs-1">
+                        <span class="badge">0</span>
+                      </div>
+                        <div class="col-xs-1">
+                          Vota issue
+                        </div>
+                    </div>
+                </dl>
+                <dl>
+                  <dt>Watchers</dt>
+                    <div class="row">
+                      <div class="col-xs-1">
+                        <span class="badge">0</span>
+                      </div>
+                        <div class="col-xs-1">
+                          Watch Issue
+                        </div>
+                    </div>
+                </dl>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
