@@ -35,7 +35,17 @@
     </div>
   </nav>
   
-  <body>
+  <body ng-controller='mainController'>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-sm-10">
+          <h1>Issues</h1>
+        </div>        
+        <div class="col-md-2 col-sm-2">
+          <a class="btn btn-default btn-block" href="#create">Create Issue</a>
+        </div>
+      </div>
+    </div>
     
     <div class="container">
       <div class="row">
@@ -47,33 +57,37 @@
           </a>
         </div>
         <div class="col-xs-1">
-          <button type="button" class="btn btn-primary">Open/Resolve</button>
+          <a class="btn btn-primary">Open</a>
         </div>
         <div class="col-xs-1">
-          <div class="form-group">
-            <select class="form-control" id="status">
-              <option>new</option>
-              <option>open</option>
-              <option>on hold</option>
-              <option>duplicate</option>
-              <option>invalid</option>
-              <option>wontfix</option>
-              <option>closed</option>
-              <option>resolve</option>
-            </select>
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Workflow
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a href="#">new</a></li>
+              <li><a href="#">open</a></li>
+              <li><a href="#">on hold</a></li>
+              <li><a href="#">duplicate</a></li>
+              <li><a href="#">invalid</a></li>
+              <li><a href="#">wontfix</a></li>
+              <li><a href="#">closed</a></li>
+              <li><a href="#">resolved</a></li>
+            </ul>
           </div>
         </div>
         <div class="col-xs-1">
-          <div class="form-group">
-            <select class="form-control" id="more">
-              <option>Delete</option>
-              <option>Attach files</option>
-            </select>
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">More
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a href="#">Attach files</a></li>
+              <li><a href="#">Delete</a></li>
+            </ul>
           </div>
         </div>
         <div class="col-xs-1">
-          <button type="button" class="btn btn-primary">Edit</button>
-        </div
+          <a class="btn btn-primary">Edit</a>
+        </div>
       </div>
       
       <div class="row">
@@ -174,15 +188,16 @@
               </div>
             </div>
           <% end %>
+          -->
         </div>  
-        -->
+        
         
         <!-- Fin comentarios -->
         
         </div>
         
-        <div class="col-xs-4">
-          <div class="panel panel-default col-offset-8">
+        <div class="col-xs-4 movedown">
+          <div class="panel panel-default">
             <div class="panel-body">      
               <div class="aui-item sidebar">
                 <div class="issue-attrs">
