@@ -3,16 +3,33 @@
 	<head lang="en">
 	  <meta charset="utf-8">
 	  <title>Issue Tracker</title>
+	  
+	  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+	  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
+	  <script type="text/javascript" src="main.js"></script>
 
 	</head>
+	
+    <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+            <div class="navbar-header"></div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><%= link_to 'Issues Tracker', issues_path %>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a id="username-navbar"><strong>Pepe</strong></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+	
+	
 	<body>
 
 	  <div ng-app="mainApp">
 		<ng-view></ng-view>
 	  </div>
 
-	  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
-	  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
-	  <script type="text/javascript" src="main.js"></script>
 	</body>
 </html>
