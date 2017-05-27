@@ -1,56 +1,18 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>Issue Tracker</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    
-    <link rel="stylesheet" href="css/index.css">
+<!DOCTYPE html>
+<html>
+	<head lang="en">
+	  <meta charset="utf-8">
+	  <title>Issue Tracker</title>
 
-    <!-- Angular library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-route.js"></script>
-    <script src="main.js"></script>
+	</head>
+	<body>
 
-    
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-    
-  </head>
-    <nav class="navbar navbar-inverse navbar-static-top">
-    <div class="container">
-      <div class="navbar-header">
-      </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li class="active"><%= link_to 'Issues Tracker', issues_path %>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a id="username-navbar"><strong>Pepe</strong></a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-10 col-sm-10">
-          <h1>Issues</h1>
-        </div>        
-        <div class="col-md-2 col-sm-2">
-          <a class="btn btn-default btn-block" href="#create">Create Issue</a>
-        </div>
-      </div>
-    </div>
+	  <div ng-app="mainApp">
+		<ng-view></ng-view>
+	  </div>
 
-    Hola
-    <div ng-app="mainApp">
-      <div ng-view></div> 
-    </div>
-  </body>
+	  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+	  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
+	  <script type="text/javascript" src="main.js"></script>
+	</body>
 </html>
