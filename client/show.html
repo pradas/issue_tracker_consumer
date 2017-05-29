@@ -57,26 +57,26 @@
           <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Workflow
             <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-              <li><a href="#">new</a></li>
-              <li><a href="#">open</a></li>
-              <li><a href="#">on hold</a></li>
-              <li><a href="#">duplicate</a></li>
-              <li><a href="#">invalid</a></li>
-              <li><a href="#">wontfix</a></li>
-              <li><a href="#">closed</a></li>
-              <li><a href="#">resolved</a></li>
-            </ul>
+             <div class="dropdown-content">
+              <a href="#">new</a>
+              <a href="#">open</a>
+              <a href="#">on hold</a>
+              <a href="#">duplicate</a>
+              <a href="#">invalid</a>
+              <a href="#">wontfix</a>
+              <a href="#">closed</a>
+              <a href="#">resolved</a>
+            </div>
           </div>
         </div>
         <div class="col-xs-1">
           <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">More
             <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-              <li><a href="#">Attach files</a></li>
-              <li><a href="#">Delete</a></li>
-            </ul>
+             <div class="dropdown-content">
+              <a href="#">Attach files</a>
+              <a href="#">Delete</a>
+            </div>
           </div>
         </div>
         <div class="col-xs-1">
@@ -95,14 +95,13 @@
             <time>a tal hora</time>
           </div>
           <div class="issue-description wiki-content desc-break">
-              <p>
-                La descripción de la issue
-              </p>
+              <p><div ng-if="issue.description == ''">No description provided</div></p>   
+              <p><div ng-if="issue.description != ''">{{issue.description}}</div></p> 
           </div>
           <hr>
           
           <!-- Attachments -->
-          <div class="attachments" id="attachments">
+          <div class="attachments" id="attachments" ng-repeat="x in issue.attachments">
             <table class = "table table-bordered table-striped">
                <thead>
                   <tr>
@@ -113,7 +112,7 @@
                
                <tbody>
                      <tr>
-                        <td>Resume 1</td>
+                        <td>{{x.name}}</td>
                         <td>
                           <button type="button" class="btn btn-primary">Download</button>
                           <button type="button" class="btn btn-danger">Delete</button>
@@ -128,7 +127,7 @@
           <hr>
           <div id="issues-comments-container">
           <h3>Comments (nComments)</h3>
-          <div id="issues-comments">
+          <div id="issues-comments" ng-repeat="x in issue.comments">
               <div class="row issue-comment comment">
                 <div class="col-xs-1">
                   <img src="https://bitbucket.org/account/pradas/avatar/32/?ts=1492956548" height="38" width="38" alt="">
@@ -136,11 +135,11 @@
                 <div class="col-xs-11">
                   <div class="row">
                     <p>
-                      <b>Adri></b>
+                      <b>{{x.user}}</b>
                     </p>
                     <div class="comment-<%= comment.id %>">
                       <p>
-                        Ei k pasa
+                        {{x.text}}
                       </p>
                     </div>
                   </div>
@@ -161,7 +160,7 @@
                         </li>
                         <li>
                           <a>
-                            <time datetime="<%=comment.created_at %>" >11 hours ago</time>
+                            <time> {{x.created_at}} hours ago</time>
                           </a>
                         </li>
                       </ul>
@@ -197,36 +196,45 @@
                 <div class="issue-attrs">
                 <dl>
                   <dt>Assignee</dt>
-                  <span class="glyphicon glyphicon-user"></span><text> </text>Tito MC
+                  <span class="glyphicon glyphicon-user"></span>{{issue.user}}
                 </dl>
                 <dl>
                   <dt>Type</dt>
-                    task
+                    <div ng-if="issue.kind == 'bug'"><span class="glyphicon glyphicon-remove"></span> {{issue.kind}}</div>   
+                    <div ng-if="issue.kind == 'enhancement'"><span class="glyphicon glyphicon-arrow-up"> {{issue.kind}}</span></div>   
+                    <div ng-if="issue.kind == 'proposal'"><span class="glyphicon glyphicon-certificate"> {{issue.kind}}</span></div>   
+                    <div ng-if="issue.kind == 'task'"><span class="glyphicon glyphicon-check"></span>{{issue.kind}}</div>
                 </dl>
                 <dl>
                   <dt>Priority</dt>
-                    critical
+                    <div ng-if="issue.priority == 'trivial'"><span class="glyphicon glyphicon-fast-backward"></span> {{issue.priority}}</div>   
+                    <div ng-if="issue.priority == 'minor'"><span class="glyphicon glyphicon-step-backward"></span> {{issue.priority}}</div>     
+                    <div ng-if="issue.priority == 'major'"><span class="glyphicon glyphicon-forward"></span> {{issue.priority}}</div>   
+                    <div ng-if="issue.priority == 'critical'"><span class="glyphicon glyphicon-fast-forward"></span> {{issue.priority}}</div>   
+                    <div ng-if="issue.priority == 'blocker'"><span class="glyphicon glyphicon-ban-circle"></span> {{issue.priority}}</div>  
                 </dl>
                 <dl>
                   <dt>Status</dt>
-                    resolved
+                    <div ng-if="issue.status == 'new'"><span class="label label-primary"> {{issue.status}}</span></div>   
+                    <div ng-if="issue.status == 'resolved'"><span class="label label-success"> {{issue.status}}</span></div>     
+                    <div ng-if="issue.status == 'closed'"><span class="label label-success"> {{issue.status}}</span></div>     
+                    <div ng-if="issue.status == 'open'"><span class="label label-default"> {{issue.status}}</span></div>     
+                    <div ng-if="issue.status == 'on hold'"><span class="label label-warning"> {{issue.status}}</span></div>     
+                    <div ng-if="issue.status == 'duplicate'"><span class="label label-info"> {{issue.status}}</span></div>     
+                    <div ng-if="issue.status == 'invalid'"><span class="label label-danger"> {{issue.status}}</span></div>   
+                    <div ng-if="issue.status == 'wontfix'"><span class="label label-danger"> {{issue.status}}</span></div>  
                 </dl>
                 <dl>
                   <dt>Votes</dt>
                     <div class="row">
-                      <div class="col-xs-1">
-                        <span class="badge">0</span>
-                      </div>
-                        <div class="col-xs-1">
-                          Vota issue
-                        </div>
+                        <span class="badge">{{issue.votes}}</span>Vota issue
                     </div>
                 </dl>
                 <dl>
                   <dt>Watchers</dt>
                     <div class="row">
                       <div class="col-xs-1">
-                        <span class="badge">0</span>
+                        <span class="badge">{{issue.watchers}}</span>
                       </div>
                         <div class="col-xs-1">
                           Watch Issue
