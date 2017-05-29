@@ -1,9 +1,9 @@
 'use strict';
 
-var app = angular.module('myApp', []);
+var app = angular.module('mainApp');
 
 app.controller('getIssuesCtrl', function($scope, $http) {
-    $http.get("http://fast-lake-76623.herokuapp.com/api/issues").header("Authorization: 110490905416396817633").then(function(response) {
+    $http.get("http://fast-lake-76623.herokuapp.com/api/issues").then(function(response) {
         $scope.myData = response.data.issues;
     });
 });
