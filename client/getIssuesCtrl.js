@@ -10,8 +10,8 @@ app.controller('getIssuesCtrl', function($scope, $http) {
 
 app.controller('createIssue', function($scope, $http) {
     
-    $http.get("http://fast-lake-76623.herokuapp.com/api/users").then(function(response) {
-        $scope.users = response.data.users;
+    $http.get("http://fast-lake-76623.herokuapp.com/api/issue").then(function(response) {
+        $scope.issue = response.data.users;
     });
     
     $scope.submit = function () {

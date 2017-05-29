@@ -23,7 +23,8 @@
           <div class="form-group">
             <label class="control-label col-xs-3" for="title">Title*:</label>
             <div class="col-xs-7">
-              <input type="title" class="form-control" id="title" ng-model="title" placeholder="Enter the title">
+              <div ng-if="issue.title != ''">
+              <input type="title" class="form-control" id="title" value={{issue.title}} ng-model="title" placeholder="Enter the title"></div>
             </div>
           </div>
         </div>

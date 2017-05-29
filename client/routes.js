@@ -10,6 +10,10 @@ mainApp.config(function($routeProvider) {
 			templateUrl: 'create.html',
 			controller: 'getIssuesCtrl'
 		})
+		.when('/edit/:id', {
+			templateUrl: 'create.html',
+			controller: 'showIssueCtrl'
+		})
 		.when('/issues/:id', {
 			templateUrl: 'show.html',
 			controller: 'showIssueCtrl'
