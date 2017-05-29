@@ -11,3 +11,7 @@
     text-align: left;
     word-wrap: break-word;
 }
+
+.active {
+    color:#9d9d9d  !important;
+} 
