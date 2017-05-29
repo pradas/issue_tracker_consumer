@@ -17,6 +17,34 @@ app.controller('showIssueCtrl', ['$scope', '$http', '$routeParams', function($sc
     });
 }]); 
 
+  
+app.controller('createComment', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+
+$scope.submit = function () {
+    var data = {
+            text: document.getElementById('comment-text')
+        };
+    
+    var config = {
+        headers : {
+            'Authorization': '110490905416396817633',
+            'Content-Type': 'application/json'
+        }
+    }
+
+    $http.post('http://fast-lake-76623.herokuapp.com/api/issues/' + $routeParams.id + '/comments', data, config)
+    .success(function (data, status, headers, config) {
+        console.log(data)
+        window.location.href = '#/issues/' + $routeParams.id;
+    })
+    .error(function (data, status, header, config) {
+        console.log(data)
+        $scope.ResponseDetails ="<hr />status: " + status +
+            "<hr />headers: " + header +
+            "<hr />config: " + config;
+    });
+};
+}]);
     
 app.controller('voteIssue', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
 

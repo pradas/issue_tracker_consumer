@@ -38,7 +38,7 @@ mainApp.config(function($routeProvider) {
 			templateUrl: 'show.html',
 			controller: 'showIssueCtrl'
 		})
-		.when('/unvote/:id', {
+		.when('/createcomment/:id', {
 			templateUrl: 'show.html',
 			controller: 'showIssueCtrl'
 		})
