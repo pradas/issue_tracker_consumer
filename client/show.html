@@ -101,7 +101,7 @@
           <hr>
           
           <!-- Attachments -->
-          <div class="attachments" id="attachments">
+          <div class="attachments" id="attachments" ng-repeat="x in issue.attachments">
             <table class = "table table-bordered table-striped">
                <thead>
                   <tr>
@@ -112,7 +112,7 @@
                
                <tbody>
                      <tr>
-                        <td>Resume 1</td>
+                        <td>{{x.name}}</td>
                         <td>
                           <button type="button" class="btn btn-primary">Download</button>
                           <button type="button" class="btn btn-danger">Delete</button>
@@ -127,7 +127,7 @@
           <hr>
           <div id="issues-comments-container">
           <h3>Comments (nComments)</h3>
-          <div id="issues-comments">
+          <div id="issues-comments" ng-repeat="x in issue.comments">
               <div class="row issue-comment comment">
                 <div class="col-xs-1">
                   <img src="https://bitbucket.org/account/pradas/avatar/32/?ts=1492956548" height="38" width="38" alt="">
@@ -135,11 +135,11 @@
                 <div class="col-xs-11">
                   <div class="row">
                     <p>
-                      <b>Adri></b>
+                      <b>{{x.user}}</b>
                     </p>
                     <div class="comment-<%= comment.id %>">
                       <p>
-                        Ei k pasa
+                        {{x.text}}
                       </p>
                     </div>
                   </div>
@@ -160,7 +160,7 @@
                         </li>
                         <li>
                           <a>
-                            <time datetime="<%=comment.created_at %>" >11 hours ago</time>
+                            <time> {{x.created_at}} hours ago</time>
                           </a>
                         </li>
                       </ul>
@@ -227,10 +227,7 @@
                 <dl>
                   <dt>Votes</dt>
                     <div class="row">
-                      <div class="col-xs-1">
-                        <span class="badge">{{issue.votes}}</span>
-                      </div>
-                        <div class="col-xs-1"> Vota issue</div>
+                        <span class="badge">{{issue.votes}}</span>Vota issue
                     </div>
                 </dl>
                 <dl>
