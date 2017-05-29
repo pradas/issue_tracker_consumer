@@ -2,11 +2,23 @@
 
 var app = angular.module('mainApp');
 
-app.controller('getIssuesCtrl', function($scope, $http) {
-    $http.get("http://fast-lake-76623.herokuapp.com/api/issues").then(function(response) {
-        $scope.myData = response.data.issues;
-    });
-});
+app.controller('getIssuesCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+    console.log($routeParams);
+        var q2 = "";
+        if ($routeParams.direction!= null && $routeParams.sort != null) 
+          q2+= "direction="+$routeParams.direction+"&sort="+$routeParams.sort;
+
+        if($routeParams.kind!=null) q2 +="&kind="+$routeParams.kind;
+        if($routeParams.status!=null) q2 +="&status="+$routeParams.status;
+        if($routeParams.priority!=null) q2 +="&priority="+$routeParams.priority;
+        if($routeParams.responsible!=null) q2 +="&responsible="+$routeParams.responsible;
+        
+        $http.get("http://fast-lake-76623.herokuapp.com/api/issues?"+q2).then(function(response) {
+           $scope.myData = response.data.issues;
+ 
+        });
+
+}]);
 
 app.controller('createIssue', function($scope, $http) {
     

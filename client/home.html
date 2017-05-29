@@ -42,14 +42,14 @@
               <table class="table table-hover pretty">
                 <thead>
                   <tr>
-                    <th class="col-xs-5">Title</th>
-                    <th>T</th>
-                    <th>P</th>
-                    <th>Status</th>
-                    <th>Votes</th>
-                    <th>Assignee</th>
-                    <th>Created</th>
-                    <th>Updated</th>
+                    <th class="col-xs-5"><a href="#/home/direction=desc&sort=Title">Title</a></th>
+                    <th><a href="#/home?direction=desc&sort=kind">T</th>
+                    <th><a href="#/home?direction=desc&sort=priority">P</th>
+                    <th><a href="#/home?direction=desc&sort=status">Status</th>
+                    <th><a href="#/home?direction=desc&sort=votes">Votes</th>
+                    <th><a href="#/home?direction=desc&sort=user_id">Assignee</th>
+                    <th><a href="#/home?direction=desc&sort=created_at">Created</th>
+                    <th><a href="#/home?direction=desc&sort=updated_at">Updated</th>
                   </tr>
                 </thead>
               
@@ -57,19 +57,24 @@
                     <tr ng-repeat="x in myData">
                       <td><a href="#issues/{{x.id}}">{{x.title}}</a></td>
                       <td>
+                          <a href= "#/home?kind={{x.kind}}">
                           <div ng-if="x.kind == 'bug'"><span class="glyphicon glyphicon-remove"></span></div>   
                           <div ng-if="x.kind == 'enhancement'"><span class="glyphicon glyphicon-arrow-up"></span></div>   
                           <div ng-if="x.kind == 'proposal'"><span class="glyphicon glyphicon-certificate"></span></div>   
                           <div ng-if="x.kind == 'task'"><span class="glyphicon glyphicon-check"></span></div>   
+                          </a>
                       </td>
                       <td>
+                        <a href= "#/home?priority={{x.priority}}">
                           <div ng-if="x.priority == 'trivial'"><span class="glyphicon glyphicon-fast-backward"></span></div>   
                           <div ng-if="x.priority == 'minor'"><span class="glyphicon glyphicon-step-backward"></span></div>     
                           <div ng-if="x.priority == 'major'"><span class="glyphicon glyphicon-forward"></span></div>   
                           <div ng-if="x.priority == 'critical'"><span class="glyphicon glyphicon-fast-forward"></span></div>   
                           <div ng-if="x.priority == 'blocker'"><span class="glyphicon glyphicon-ban-circle"></span></div>   
+                          </a>
                       </td>
                       <td>
+                        <a href= "#/home?status={{x.status}}">
                           <div ng-if="x.status == 'new'"><span class="label label-primary">{{x.status}}</span></div>   
                           <div ng-if="x.status == 'resolved'"><span class="label label-success">{{x.status}}</span></div>     
                           <div ng-if="x.status == 'closed'"><span class="label label-success">{{x.status}}</span></div>     
@@ -78,11 +83,12 @@
                           <div ng-if="x.status == 'duplicate'"><span class="label label-info">{{x.status}}</span></div>     
                           <div ng-if="x.status == 'invalid'"><span class="label label-danger">{{x.status}}</span></div>   
                           <div ng-if="x.status == 'wontfix'"><span class="label label-danger">{{x.status}}</span></div>   
+                          </a>
                       </td>
                       <td><span class="badge">{{x.votes}}</span></td>
-                      <td class="username-td"><span class="glyphicon glyphicon-user"></span>{{x.user}}</td>
-                      <td><time datetime=issue.created_at >{{x.created_at | date :"yyyy-MM-dd HH:mm:ss" }}</time></td>
-                      <td><time datetime=issue.updated_at >{{x.updated_at| date :"yyyy-MM-dd HH:mm:ss" }}</time></td>
+                      <td class="username-td">  <a href= "#/home?responsible={{x.user_id}}"><span class="glyphicon glyphicon-user"></span>{{x.user}}</a></td>
+                      <td><time datetime=issue.created_at >{{x.created_at | date :"dd-MM-yy HH:mm:ss" }}</time></td>
+                      <td><time datetime=issue.updated_at >{{x.updated_at| date :"dd-MM-yy HH:mm:ss" }}</time></td>
                     </tr>
                 </tbody>
               </table>
