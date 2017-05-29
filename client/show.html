@@ -75,7 +75,7 @@
             <span class="caret"></span></button>
              <div class="dropdown-content">
               <a href="#">Attach files</a>
-              <a href="#">Delete</a>
+              <div ng-controller="deleteIssue"><a href="#delete/{{issue.id}}" ng-click="submit()">Delete</a></div>
             </div>
           </div>
         </div>

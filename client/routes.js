@@ -38,6 +38,10 @@ mainApp.config(function($routeProvider) {
 			templateUrl: 'show.html',
 			controller: 'showIssueCtrl'
 		})
+		.when('/unvote/:id', {
+			templateUrl: 'show.html',
+			controller: 'showIssueCtrl'
+		})
 		.otherwise({
 			redirectTo: '/home'
 		});

@@ -15,7 +15,8 @@ app.controller('showIssueCtrl', ['$scope', '$http', '$routeParams', function($sc
     then(function(response) {
         $scope.issue = response.data;
     });
-}]);    
+}]); 
+
     
 app.controller('voteIssue', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
 
@@ -29,7 +30,7 @@ $scope.submit = function () {
 
     $http.post('http://fast-lake-76623.herokuapp.com/api/issues/' + $routeParams.id + '/votes', null, config)
     .success(function (data, status, headers, config) {
-        window.location.href = '/issues/' + $routeParams.id;
+        window.location.href = '#/issues/' + $routeParams.id;
     })
     .error(function (data, status, header, config) {
         console.log(data)
@@ -52,7 +53,7 @@ $scope.submit = function () {
 
     $http.delete('http://fast-lake-76623.herokuapp.com/api/issues/' + $routeParams.id + '/votes', config)
     .success(function (data, status, headers, config) {
-        window.location.href = '/issues/' + $routeParams.id;
+        window.location.href = '#/issues/' + $routeParams.id;
     })
     .error(function (data, status, header, config) {
         console.log(data)
@@ -75,7 +76,7 @@ $scope.submit = function () {
 
     $http.post('http://fast-lake-76623.herokuapp.com/api/issues/' + $routeParams.id + '/watchers', null, config)
     .success(function (data, status, headers, config) {
-        window.location.href = '/issues/' + $routeParams.id;
+        window.location.href = '#/issues/' + $routeParams.id;
     })
     .error(function (data, status, header, config) {
         console.log(data)
@@ -98,7 +99,7 @@ $scope.submit = function () {
 
     $http.delete('http://fast-lake-76623.herokuapp.com/api/issues/' + $routeParams.id + '/watchers', config)
     .success(function (data, status, headers, config) {
-        window.location.href = '/issues/' + $routeParams.id;
+        window.location.href = '#/issues/' + $routeParams.id;
     })
     .error(function (data, status, header, config) {
         console.log(data)
@@ -133,7 +134,7 @@ app.controller('editIssue', ['$scope', '$http', '$routeParams', function($scope,
     
         $http.post('http://fast-lake-76623.herokuapp.com/api/issues/' + $routeParams.id + '/votes', config)
         .success(function (status, headers, config) {
-            window.location.href = '/#/issues/' + $routeParams.id;
+            window.location.href = '/issues/' + $routeParams.id;
         })
         .error(function (status, header, config) {
             $scope.ResponseDetails ="<hr />status: " + status +
@@ -141,4 +142,24 @@ app.controller('editIssue', ['$scope', '$http', '$routeParams', function($scope,
                 "<hr />config: " + config;
         });
     };
+}]);
+
+app.controller('deleteIssue', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+
+        var config = {
+            headers : {
+                'Authorization': '110490905416396817633',
+                'Content-Type': 'application/json'
+            }
+        }
+    
+        $http.post('http://fast-lake-76623.herokuapp.com/api/issues/' + $routeParams.id, config)
+        .success(function (status, headers, config) {
+            window.location.href = '/';
+        })
+        .error(function (status, header, config) {
+            $scope.ResponseDetails ="<hr />status: " + status +
+                "<hr />headers: " + header +
+                "<hr />config: " + config;
+        });
 }]);
