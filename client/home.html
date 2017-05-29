@@ -13,6 +13,7 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
 	<script type="text/javascript" src="routes.js"></script>
 	<script type="text/javascript" src="getIssuesCtrl.js"></script>
+	<script type="text/javascript" src="showIssueCtrl.js"></script>
 
     
     <!-- jQuery library -->
@@ -53,13 +54,12 @@
               
                 <tbody>
                     <tr ng-repeat="x in myData">
-                      <td>{{x.title}}</td>
+                      <td><a href="#issues/{{x.id}}">{{x.title}}</a></td>
                       <td>
                           <div ng-if="x.kind == 'bug'"><span class="glyphicon glyphicon-remove"></span></div>   
                           <div ng-if="x.kind == 'enhancement'"><span class="glyphicon glyphicon-arrow-up"></span></div>   
                           <div ng-if="x.kind == 'proposal'"><span class="glyphicon glyphicon-certificate"></span></div>   
                           <div ng-if="x.kind == 'task'"><span class="glyphicon glyphicon-check"></span></div>   
-                          {{x.kind}}
                       </td>
                       <td>
                           <div ng-if="x.priority == 'trivial'"><span class="glyphicon glyphicon-fast-backward"></span></div>   
@@ -67,7 +67,6 @@
                           <div ng-if="x.priority == 'major'"><span class="glyphicon glyphicon-forward"></span></div>   
                           <div ng-if="x.priority == 'critical'"><span class="glyphicon glyphicon-fast-forward"></span></div>   
                           <div ng-if="x.priority == 'blocker'"><span class="glyphicon glyphicon-ban-circle"></span></div>   
-                          {{x.priority}}
                       </td>
                       <td>
                           <div ng-if="x.status == 'new'"><span class="label label-primary">{{x.status}}</span></div>   
