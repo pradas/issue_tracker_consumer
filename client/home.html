@@ -12,6 +12,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
 	<script type="text/javascript" src="routes.js"></script>
+	<script type="text/javascript" src="js/utils.js"></script>
 	<script type="text/javascript" src="getIssuesCtrl.js"></script>
 	<script type="text/javascript" src="showIssueCtrl.js"></script>
 
@@ -80,8 +81,8 @@
                       </td>
                       <td><span class="badge">{{x.votes}}</span></td>
                       <td class="username-td"><span class="glyphicon glyphicon-user"></span>{{x.user}}</td>
-                      <td><time datetime=issue.created_at >{{x.created_at}} ago</time></td>
-                      <td><time datetime=issue.updated_at >{{x.updated_at}} ago</time></td>
+                      <td><time datetime=issue.created_at >{{x.created_at | date :"yyyy-MM-dd HH:mm:ss" }} ago</time></td>
+                      <td><time datetime=issue.updated_at >{{x.updated_at| date :"yyyy-MM-dd HH:mm:ss" }} ago</time></td>
                     </tr>
                 </tbody>
               </table>
