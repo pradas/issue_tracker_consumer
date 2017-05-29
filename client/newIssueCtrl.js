@@ -1,7 +1,7 @@
 'use strict';
-var newIssueApp = angular.module('myApp', []);
+var mainApp = angular.module('myApp', []);
 
-newIssueApp.controller('newIssueCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+mainApp.controller('newIssueCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
     $scope.submitIssueForm = function() {
         var title = document.getElementById("title").value;
         var description = document.getElementById("description").value;

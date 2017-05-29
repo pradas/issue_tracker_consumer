@@ -10,9 +10,9 @@ mainApp.config(function($routeProvider) {
 			templateUrl: 'create.html',
 			controller: 'getIssuesCtrl'
 		})
-		.when('/show', {
+		.when('/issues/:id', {
 			templateUrl: 'show.html',
-			controller: 'getIssuesCtrl'
+			controller: 'showIssueCtrl'
 		})
 		.when('/submit', {
 			templateUrl: 'home.html',

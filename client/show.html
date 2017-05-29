@@ -12,6 +12,7 @@
 	  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
 	  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
 	  <script type="text/javascript" src="routes.js"></script>
+	  <script type="text/javascript" src="showIssueCtrl.js"></script>
 
     
     <!-- jQuery library -->
@@ -38,14 +39,19 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-8">
-          <span class="issue-id">
-              Issue  #1
-          </span>
-            <span class="label label-success">Status</span>
-          </a>
+          <span class="issue-id"> Issue  {{issue.id}}</span>
+            <div ng-if="issue.status == 'new'"><span class="label label-primary">{{issue.status}}</span></div>   
+            <div ng-if="issue.status == 'resolved'"><span class="label label-success">{{issue.status}}</span></div>     
+            <div ng-if="issue.status == 'closed'"><span class="label label-success">{{issue.status}}</span></div>     
+            <div ng-if="issue.status == 'open'"><span class="label label-default">{{issue.status}}</span></div>     
+            <div ng-if="issue.status == 'on hold'"><span class="label label-warning">{{issue.status}}</span></div>     
+            <div ng-if="issue.status == 'duplicate'"><span class="label label-info">{{issue.status}}</span></div>     
+            <div ng-if="issue.status == 'invalid'"><span class="label label-danger">{{issue.status}}</span></div>   
+            <div ng-if="issue.status == 'wontfix'"><span class="label label-danger">{{issue.status}}</span></div> 
         </div>
         <div class="col-xs-1">
-          <a class="btn btn-primary">Open</a>
+          <div ng-if="issue.status == 'new' || issue.status == 'open'"><a class="btn btn-primary">Resolve</a></div>
+          <div ng-if="issue.status != 'new' && issue.status != 'open'"><a class="btn btn-primary">Open</a></div>
         </div>
         <div class="col-xs-1">
           <div class="dropdown">
@@ -80,10 +86,10 @@
       
       <div class="row">
         <div class="col-xs-8">
-          <h3 id="issue-title">Issue Title</h3>
+          <h3 id="issue-title">{{issue.title}}</h3>
           <div class="issue-author">
             <a>
-              <span title=@issue.user.name >Issue Author</span>
+              <span>{{issue.user}}</span>
             </a>
             created an issue
             <time>a tal hora</time>
