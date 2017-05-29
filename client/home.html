@@ -46,7 +46,7 @@
                     <th>Status</th>
                     <th>Votes</th>
                     <th>Assignee</th>
-                    <th>Created></th>
+                    <th>Created</th>
                     <th>Updated</th>
                   </tr>
                 </thead>
@@ -54,9 +54,31 @@
                 <tbody>
                     <tr ng-repeat="x in myData">
                       <td>{{x.title}}</td>
-                      <td>{{x.kind}}</td>
-                      <td>{{x.priority}}</td>
-                      <td>{{x.status}}</td>
+                      <td>
+                          <div ng-if="x.kind == 'bug'"><span class="glyphicon glyphicon-remove"></span></div>   
+                          <div ng-if="x.kind == 'enhancement'"><span class="glyphicon glyphicon-arrow-up"></span></div>   
+                          <div ng-if="x.kind == 'proposal'"><span class="glyphicon glyphicon-certificate"></span></div>   
+                          <div ng-if="x.kind == 'task'"><span class="glyphicon glyphicon-check"></span></div>   
+                          {{x.kind}}
+                      </td>
+                      <td>
+                          <div ng-if="x.priority == 'trivial'"><span class="glyphicon glyphicon-fast-backward"></span></div>   
+                          <div ng-if="x.priority == 'minor'"><span class="glyphicon glyphicon-step-backward"></span></div>     
+                          <div ng-if="x.priority == 'major'"><span class="glyphicon glyphicon-forward"></span></div>   
+                          <div ng-if="x.priority == 'critical'"><span class="glyphicon glyphicon-fast-forward"></span></div>   
+                          <div ng-if="x.priority == 'blocker'"><span class="glyphicon glyphicon-ban-circle"></span></div>   
+                          {{x.priority}}
+                      </td>
+                      <td>
+                          <div ng-if="x.status == 'new'"><span class="label label-primary">{{x.status}}</span></div>   
+                          <div ng-if="x.status == 'resolved'"><span class="label label-success">{{x.status}}</span></div>     
+                          <div ng-if="x.status == 'closed'"><span class="label label-success">{{x.status}}</span></div>     
+                          <div ng-if="x.status == 'open'"><span class="label label-default">{{x.status}}</span></div>     
+                          <div ng-if="x.status == 'on hold'"><span class="label label-warning">{{x.status}}</span></div>     
+                          <div ng-if="x.status == 'duplicate'"><span class="label label-info">{{x.status}}</span></div>     
+                          <div ng-if="x.status == 'invalid'"><span class="label label-danger">{{x.status}}</span></div>   
+                          <div ng-if="x.status == 'wontfix'"><span class="label label-danger">{{x.status}}</span></div>   
+                      </td>
                       <td><span class="badge">{{x.votes}}</span></td>
                       <td class="username-td"><span class="glyphicon glyphicon-user"></span>{{x.user}}</td>
                       <td><time datetime=issue.created_at >{{x.created_at}} ago</time></td>
