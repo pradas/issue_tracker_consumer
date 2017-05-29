@@ -41,9 +41,8 @@
           <div class="form-group">
             <label class="control-label col-xs-3" for="user">User*:</label>
             <div class="col-xs-7"> 
-              <select class="form-control" ng-model="user" id="user">
-                <option value="2">Adrián Borrego</option>
-                <option value="1">Gerard Pradas</option>
+              <select class="form-control" ng-model="userissue" id="userissue"
+                ng-options="user.id as user.name for user in users">
               </select>
             </div>
           </div>
