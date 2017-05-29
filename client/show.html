@@ -227,7 +227,9 @@
                 <dl>
                   <dt>Votes</dt>
                     <div class="row">
-                        <span class="badge">{{issue.votes}}</span>Vota issue
+                        <span class="badge">{{issue.votes}}</span>
+                        <div ng-if="issue.has_voted == true"><a href="#unvote/{{issue.id}}">Remove vote</a></div>
+                        <div ng-if="issue.has_voted == false" ng-controller="voteIssue" ng-click="submit()"><a href="#vote/{{issue.id}}">Vote for this issue</a></div>
                     </div>
                 </dl>
                 <dl>
@@ -237,7 +239,8 @@
                         <span class="badge">{{issue.watchers}}</span>
                       </div>
                         <div class="col-xs-1">
-                          Watch Issue
+                          <div ng-if="issue.has_watched == true"><a href="#unwatch/{{issue.id}}">Stop Watching</a></div>
+                          <div ng-if="issue.has_watched == false"><a href="#watch/{{issue.id}}">Watch this issue</a></div>
                         </div>
                     </div>
                 </dl>

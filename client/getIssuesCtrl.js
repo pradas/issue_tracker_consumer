@@ -33,8 +33,8 @@ app.controller('createIssue', function($scope, $http) {
 
         $http.post("http://fast-lake-76623.herokuapp.com/api/issues", data, config)
         .success(function (data, status, headers, config) {
-            console.log(data)
-;            window.location.href = '/';
+            console.log(data);
+            window.location.href = '/';
         })
         .error(function (data, status, header, config) {
             console.log(data);
