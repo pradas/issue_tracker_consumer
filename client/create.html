@@ -18,12 +18,12 @@
       <h1>Issues</h1> 
       <h1>New Issue</h1>
       
-      <form class="form-horizontal" ng-submit="submitIssueForm()">
+      <form class="form-horizontal" ng-controller="createIssue">
         <div class="row">
           <div class="form-group">
             <label class="control-label col-xs-3" for="title">Title*:</label>
             <div class="col-xs-7">
-              <input type="title" class="form-control" id="title" placeholder="Enter the title">
+              <input type="title" class="form-control" id="title" ng-model="title" placeholder="Enter the title">
             </div>
           </div>
         </div>
@@ -32,7 +32,7 @@
           <div class="form-group">
             <label class="control-label col-xs-3" for="description">Description:</label>
               <div class="col-xs-7"> 
-                <textarea class="form-control" rows="8" id="description"></textarea>
+                <textarea class="form-control" rows="8" ng-model="description" id="description"></textarea>
               </div>
           </div>
         </div>
@@ -41,9 +41,9 @@
           <div class="form-group">
             <label class="control-label col-xs-3" for="user">User*:</label>
             <div class="col-xs-7"> 
-              <select class="form-control" id="user">
-                <option>Adrián Borrego</option>
-                <option>Gerard Pradas</option>
+              <select class="form-control" ng-model="user" id="user">
+                <option value="2">Adrián Borrego</option>
+                <option value="1">Gerard Pradas</option>
               </select>
             </div>
           </div>
@@ -53,7 +53,7 @@
           <div class="form-group">
             <label class="control-label col-xs-3" for="kind">Kind*:</label>
             <div class="col-xs-7"> 
-              <select class="form-control" id="kind">
+              <select class="form-control" ng-model="kind" id="kind">
                 <option>bug</option>
                 <option>enhancement</option>
                 <option>proposal</option>
@@ -67,7 +67,7 @@
           <div class="form-group">
             <label class="control-label col-xs-3" for="prior">Priority*:</label>
             <div class="col-xs-7"> 
-              <select class="form-control" id="prior">
+              <select class="form-control" ng-model="prior" id="prior">
                 <option>trivial</option>
                 <option>minor</option>
                 <option>major</option>
@@ -81,7 +81,7 @@
         <div class="row">
           <div class="form-group"> 
             <div class="col-xs-offset-3 col-xs-1">
-              <a class="btn btn-default btn-block" href="#submit">Submit</a>
+              <button class="btn btn-default btn-block" ng-click="submit()">Submit</button>
             </div>
           </div>
         </div>
