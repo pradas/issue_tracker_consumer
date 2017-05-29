@@ -34,9 +34,41 @@
                     <a class="btn btn-default btn-block" href="#create">Create Issue</a>
                 </div>
             </div>
+            
+            <div class="row" ng-app="mainApp" ng-controller="getIssuesCtrl">
+                
+              <table class="table table-hover pretty">
+                <thead>
+                  <tr>
+                    <th class="col-xs-5">Title</th>
+                    <th>T</th>
+                    <th>P</th>
+                    <th>Status</th>
+                    <th>Votes</th>
+                    <th>Assignee</th>
+                    <th>Created></th>
+                    <th>Updated</th>
+                  </tr>
+                </thead>
+              
+                <tbody>
+                    <tr ng-repeat="x in myData">
+                      <td>{{x.title}}</td>
+                      <td>{{x.kind}}</td>
+                      <td>{{x.priority}}</td>
+                      <td>{{x.status}}</td>
+                      <td><span class="badge">{{x.votes}}</span></td>
+                      <td class="username-td"><span class="glyphicon glyphicon-user"></span>{{x.user_id}}</td>
+                      <td><time datetime=issue.created_at >{{x.created_at}} ago</time></td>
+                      <td><time datetime=issue.updated_at >{{x.updated_at}} ago</time></td>
+                    </tr>
+                </tbody>
+              </table>
+            </div>
+            
         </div>
         
-        <div ng-app="mainApp" ng-controller="getIssuesCtrl"> 
+        <!--<div ng-app="mainApp" ng-controller="getIssuesCtrl"> 
         
             <ul>
               <li ng-repeat="x in myData">
@@ -44,6 +76,6 @@
               </li>
             </ul>
         
-        </div>
+        </div>-->
     </body>
 </html>
