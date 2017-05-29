@@ -27,11 +27,12 @@ $scope.submit = function () {
         }
     }
 
-    $http.post('http://fast-lake-76623.herokuapp.com/api/issues/' + $routeParams.id + '/votes', config)
-    .success(function (status, headers, config) {
+    $http.post('http://fast-lake-76623.herokuapp.com/api/issues/' + $routeParams.id + '/votes', null, config)
+    .success(function (data, status, headers, config) {
         window.location.href = '/issues/' + $routeParams.id;
     })
-    .error(function (status, header, config) {
+    .error(function (data, status, header, config) {
+        console.log(data)
         $scope.ResponseDetails ="<hr />status: " + status +
             "<hr />headers: " + header +
             "<hr />config: " + config;
