@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="myApp">
+<html>
   <head>
     <title>Chat Example</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,7 +36,7 @@
             </div>
         </div>
         
-        <div ng-controller="getIssuesCtrl"> 
+        <div ng-app="myApp" ng-controller="getIssuesCtrl"> 
         
             <ul>
               <li ng-repeat="x in myData">

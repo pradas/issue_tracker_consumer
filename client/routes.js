@@ -4,15 +4,15 @@ mainApp.config(function($routeProvider) {
 	$routeProvider
 		.when('/home', {
 			templateUrl: 'home.html',
-			controller: 'issueCtrl'
+			controller: 'getIssuesCtrl'
 		})
 		.when('/create', {
 			templateUrl: 'create.html',
-			controller: 'StudentController'
+			controller: 'getIssuesCtrl'
 		})
 		.when('/show', {
 			templateUrl: 'show.html',
-			controller: 'StudentController'
+			controller: 'getIssuesCtrl'
 		})
 		.when('/submit', {
 			templateUrl: 'home.html',
