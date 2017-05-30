@@ -99,7 +99,7 @@
                         <td>{{x.name}}</td>
                         <td>
                           <button type="button" class="btn btn-primary">Download</button>
-                          <button type="button" class="btn btn-danger">Delete</button>
+                          <div ng-controller="deleteAttachment"><a href="" ng-click="delete(x.id)" class="btn btn-danger">Delete</a></div>
                         </td>
                      </tr>
                </tbody>
