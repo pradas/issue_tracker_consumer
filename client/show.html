@@ -33,23 +33,25 @@
             <div ng-if="issue.status == 'invalid'"><span class="label label-danger">{{issue.status}}</span></div>   
             <div ng-if="issue.status == 'wontfix'"><span class="label label-danger">{{issue.status}}</span></div> 
         </div>
-        <div class="col-xs-1">
-          <div ng-if="issue.status == 'new' || issue.status == 'open'"><a class="not-grey btn btn-primary">Resolve</a></div>
-          <div ng-if="issue.status != 'new' && issue.status != 'open'"><a class="not-grey btn btn-primary">Open</a></div>
-        </div>
-        <div class="col-xs-1">
-          <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Workflow
-            <span class="caret"></span></button>
-             <div class="dropdown-content">
-              <a href="#">new</a>
-              <a href="#">open</a>
-              <a href="#">on hold</a>
-              <a href="#">duplicate</a>
-              <a href="#">invalid</a>
-              <a href="#">wontfix</a>
-              <a href="#">closed</a>
-              <a href="#">resolved</a>
+        <div  ng-controller="openResolveCont">
+          <div class="col-xs-1">
+            <div ng-if="issue.status == 'new' || issue.status == 'open'"><a class="not-grey btn btn-primary" ng-click="changeWork('resolved')">Resolve</a></div>
+            <div ng-if="issue.status != 'new' && issue.status != 'open'"><a class="not-grey btn btn-primary" ng-click="changeWork('open')">Open</a></div>
+          </div>
+          <div class="col-xs-1">
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Workflow
+              <span class="caret"></span></button>
+               <div class="dropdown-content">
+                <a href="" ng-click="changeWork('new')">new</a>
+                <a href="" ng-click="changeWork('open')">open</a>
+                <a href="" ng-click="changeWork('on hold')">on hold</a>
+                <a href="" ng-click="changeWork('duplicate')">duplicate</a>
+                <a href="" ng-click="changeWork('invalid')">invalid</a>
+                <a href="" ng-click="changeWork('wontfix')">wontfix</a>
+                <a href="" ng-click="changeWork('closed')">closed</a>
+                <a href="" ng-click="changeWork('resolved')">resolved</a>
+              </div>
             </div>
           </div>
         </div>

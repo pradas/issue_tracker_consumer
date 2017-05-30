@@ -17,7 +17,27 @@ app.controller('showIssueCtrl', ['$scope', '$http', '$routeParams', function($sc
     });
 }]); 
 
-  
+app.controller('openResolveCont', function($scope, $http, $routeParams) {
+    $scope.changeWork = function (work) {
+        var data = {
+            status: work
+        };
+        var config = {
+            headers : {
+                'Authorization': '110490905416396817633',
+                'Content-Type': 'application/json'
+            }
+        }
+        $http.put('http://fast-lake-76623.herokuapp.com/api/issues/' + $routeParams.id, data, config)
+        .success(function (data, status, headers, config) {
+            console.log(data)
+            location.reload(); 
+        })
+        .error(function (data, status, header, config) {
+            console.log(data)
+        });
+    };
+});
   
 app.controller('createFile', function($scope, $http, $routeParams) {
 
