@@ -29,3 +29,7 @@ RubyOnRails: http://fast-lake-76623.herokuapp.com/
 [API especificada amb swagger](https://drive.google.com/file/d/0B7BMaLyaJJnXYUJBTTFlM1BIVEU/view?usp=sharing)
 
 API Token: 110490905416396817633
+
+Documentació Tercer Lliurament: https://drive.google.com/file/d/0B2xCt-hKVI6qYjlaR1F1OTdCMlE/view?usp=sharing
+
+Diagrama de classes (al document no es veu molt bé): https://drive.google.com/file/d/0B2xCt-hKVI6qZGFqM29KRnltN28/view?usp=sharing
