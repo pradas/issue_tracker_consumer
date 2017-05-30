@@ -98,8 +98,8 @@
                      <tr>
                         <td>{{x.name}}</td>
                         <td>
-                          <button type="button" class="btn btn-primary">Download</button>
-                          <div ng-controller="deleteAttachment"><a href="" ng-click="delete(x.id)" class="btn btn-danger">Delete</a></div>
+                          <button type="button" class="not-grey btn btn-primary">Download</button>
+                          <div ng-controller="deleteAttachment"><a href="" ng-click="delete(x.id)" class="not-grey btn btn-danger">Delete</a></div>
                         </td>
                      </tr>
                </tbody>
@@ -177,7 +177,7 @@
                     <textarea class="form-control" rows="2" ng-model="comment" id="comment-text" placeholder="What do you want to say?"></textarea>
                   </div>
                   <div class="row formfield">
-                    <a href="" button class="btn btn-primary" ng-click="sendComment()">Submit</a>
+                    <a href="" button class="not-grey btn btn-primary" ng-click="sendComment()">Submit</a>
                   </div>
                 </form>
               </div>
