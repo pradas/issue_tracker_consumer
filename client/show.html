@@ -58,7 +58,7 @@
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">More
             <span class="caret"></span></button>
              <div class="dropdown-content">
-              <a href="#">Attach files</a>
+              <a href="" onclick="$('#attach-form').toggle();">Attach files</a>
               <div ng-controller="deleteIssue"><a href="" ng-click="delete()">Delete</a></div>
             </div>
           </div>
@@ -186,8 +186,18 @@
         
         
         </div>
-        
         <div class="col-xs-4 movedown">
+          <div id="attach-form" hidden>
+            <form ng-controller="createFile">
+              <div class="form-group">
+                <label for="">Archivo:</label>
+                <input type="file" ng-model="file">
+              </div>
+              <button type="submit" class="btn btn-primary" ng-click="send()">Enviar</button>
+              <a class="btn" onclick="$('#attach-form').hide();">Cancel</a>
+            </form>
+          </div>
+          
           <div class="panel panel-default">
             <div class="panel-body">      
               <div class="aui-item sidebar">

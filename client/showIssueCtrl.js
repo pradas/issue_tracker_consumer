@@ -18,6 +18,43 @@ app.controller('showIssueCtrl', ['$scope', '$http', '$routeParams', function($sc
 }]); 
 
   
+  
+app.controller('createFile', function($scope, $http, $routeParams) {
+
+
+    $scope.send = function () {
+        
+        var data = {
+            text: $scope.comment
+        };
+        
+        var fd = new FormData();
+        fd.append('resume[attachment]', $scope.file);
+    
+        var config = {
+            headers : {
+                'Authorization': '110490905416396817633',
+                'Content-Type': undefined
+            }
+        }
+    
+        $http.post('http://fast-lake-76623.herokuapp.com/api/issues/' + $routeParams.id + '/attachments', fd, config)
+        .success(function (data, status, headers, config) {
+            console.log(data)
+            location.reload(); 
+        })
+        .error(function (data, status, header, config) {
+            console.log(data)
+            console.log(status)
+            $scope.ResponseDetails ="<hr />status: " + status +
+                "<hr />headers: " + header +
+                "<hr />config: " + config;
+        });
+    };
+    
+});
+  
+  
 app.controller('createComment', function($scope, $http, $routeParams) {
 
 $scope.sendComment = function () {
