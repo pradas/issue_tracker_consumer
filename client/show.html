@@ -34,8 +34,8 @@
             <div ng-if="issue.status == 'wontfix'"><span class="label label-danger">{{issue.status}}</span></div> 
         </div>
         <div class="col-xs-1">
-          <div ng-if="issue.status == 'new' || issue.status == 'open'"><a class="btn btn-primary">Resolve</a></div>
-          <div ng-if="issue.status != 'new' && issue.status != 'open'"><a class="btn btn-primary">Open</a></div>
+          <div ng-if="issue.status == 'new' || issue.status == 'open'"><a class="not-grey btn btn-primary">Resolve</a></div>
+          <div ng-if="issue.status != 'new' && issue.status != 'open'"><a class="not-grey btn btn-primary">Open</a></div>
         </div>
         <div class="col-xs-1">
           <div class="dropdown">
@@ -64,7 +64,7 @@
           </div>
         </div>
         <div class="col-xs-1">
-          <a class="btn btn-primary" href="#edit/{{issue.id}}">Edit</a>
+          <a class="not-grey btn btn-primary" href="#edit/{{issue.id}}">Edit</a>
         </div>
       </div>
       
@@ -98,8 +98,8 @@
                      <tr>
                         <td>{{x.name}}</td>
                         <td>
-                          <button type="button" class="btn btn-primary">Download</button>
-                          <button type="button" class="btn btn-danger">Delete</button>
+                          <button type="button" class="not-grey btn btn-primary">Download</button>
+                          <div ng-controller="deleteAttachment"><a href="" ng-click="delete(x.id)" class="not-grey btn btn-danger">Delete</a></div>
                         </td>
                      </tr>
                </tbody>
@@ -177,7 +177,7 @@
                     <textarea class="form-control" rows="2" ng-model="comment" id="comment-text" placeholder="What do you want to say?"></textarea>
                   </div>
                   <div class="row formfield">
-                    <a href="" button class="btn btn-primary" ng-click="sendComment()">Submit</a>
+                    <a href="" button class="not-grey btn btn-primary" ng-click="sendComment()">Submit</a>
                   </div>
                 </form>
               </div>
@@ -235,9 +235,13 @@
                 <dl>
                   <dt>Votes</dt>
                     <div class="row">
+                      <div class="col-xs-1">
                         <span class="badge">{{issue.votes}}</span>
-                        <div ng-if="issue.has_voted == true" ng-controller="unvoteIssue" ng-click="submit()"><a href="#unvote/{{issue.id}}">Remove vote</a></div>
-                        <div ng-if="issue.has_voted == false" ng-controller="voteIssue" ng-click="submit()"><a href="#vote/{{issue.id}}">Vote for this issue</a></div>
+                      </div>
+                      <div class="col-xs-1">
+                        <div ng-if="issue.has_voted == true" ng-controller="unvoteIssue" ng-click="submit()"><a href="#unvote/{{issue.id}}">Unvote</a></div>
+                        <div ng-if="issue.has_voted == false" ng-controller="voteIssue" ng-click="submit()"><a href="#vote/{{issue.id}}">Vote</a></div>
+                      </div>
                     </div>
                 </dl>
                 <dl>
@@ -247,8 +251,8 @@
                         <span class="badge">{{issue.watchers}}</span>
                       </div>
                         <div class="col-xs-1">
-                          <div ng-if="issue.has_watched == true" ng-controller="unwatchIssue" ng-click="submit()"><a href="#unwatch/{{issue.id}}">Stop Watching</a></div>
-                          <div ng-if="issue.has_watched == false" ng-controller="watchIssue" ng-click="submit()"><a href="#watch/{{issue.id}}">Watch this issue</a></div>
+                          <div ng-if="issue.has_watched == true" ng-controller="unwatchIssue" ng-click="submit()"><a href="#unwatch/{{issue.id}}">Unwatch</a></div>
+                          <div ng-if="issue.has_watched == false" ng-controller="watchIssue" ng-click="submit()"><a href="#watch/{{issue.id}}">Watch</a></div>
                         </div>
                     </div>
                 </dl>

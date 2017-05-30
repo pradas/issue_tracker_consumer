@@ -108,6 +108,30 @@ app.controller('deleteComment', function($scope, $http, $routeParams) {
     };
 });
 
+app.controller('deleteAttachment', function($scope, $http, $routeParams) {
+    $scope.delete = function (attachment_id) {
+
+        var config = {
+            headers : {
+                'Authorization': '110490905416396817633',
+                'Content-Type': 'application/json'
+            }
+        }
+        
+        $http.delete('http://fast-lake-76623.herokuapp.com/api/issues/' + $routeParams.id + '/attachments/' + attachment_id, config)
+        .success(function (data, status, headers, config) {
+            console.log(data);
+            location.reload(); 
+        })
+        .error(function (data, status, header, config) {
+            console.log(data);
+            $scope.ResponseDetails ="<hr />status: " + status +
+                "<hr />headers: " + header +
+                "<hr />config: " + config;
+        });
+    };
+});
+
 
 app.controller('editForm', function($scope, $http, $routeParams) {
     $scope.editForm = function (id) {
