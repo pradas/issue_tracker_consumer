@@ -99,8 +99,10 @@
                      <tr>
                         <td>{{x.name}}</td>
                         <td>
-                          <button type="button" class="not-grey btn btn-primary">Download</button>
-                          <div ng-controller="deleteAttachment"><a href="" ng-click="delete(x.id)" class="not-grey btn btn-danger">Delete</a></div>
+                          <div ng-controller="getAttachment"><a href="" ng-click="getAttach(x.attachment)" class="not-grey btn btn-primary">Download</a></div>
+                          <div ng-if="x.user == 'Adrián Borrego Martínez'">
+                            <div ng-controller="deleteAttachment"><a href="" ng-click="delete(x.id)" class="not-grey btn btn-danger">Delete</a></div>
+                          </div>
                         </td>
                      </tr>
                </tbody>
@@ -132,7 +134,6 @@
                           <div class = "row formfield">
                               <textarea ng-model="commentToSend" class="form-control comment">{{x.text}}</textarea>
                           </div>
-                          
                           <div class="row formfield">
                             <button class="btn btn-primary bold-text" ng-click="editComment(x.id)">Editar</button>
                           </div>
@@ -142,18 +143,24 @@
                     <div class="row">
                       <ul class="list-inline">
                           <li>
-                            <div ng-controller="editForm">
-                              <a href="" class="edit-comment-link" ng-click="editForm(x.id)">Edit</a>
+                            <div ng-if="x.user == 'Adrián Borrego Martínez'">
+                              <div ng-controller="editForm">
+                                <a href="" class="edit-comment-link" ng-click="editForm(x.id)">Edit</a>
+                              </div>
                             </div>
                           </li>
                         <li>
-                          <a class="comment-pin-link" href="#comment-pin">
-                              Pin
-                          </a>
+                          <div ng-if="x.user == 'Adrián Borrego Martínez'">
+                            <a class="comment-pin-link" href="#comment-pin">
+                                Pin
+                            </a>
+                          </div>
                         </li>
                         <li>
-                          <div ng-controller="deleteComment">
-                            <a href="" ng-click="delete(x.id)">Delete</a>
+                          <div ng-if="x.user == 'Adrián Borrego Martínez'">
+                            <div ng-controller="deleteComment">
+                              <a href="" ng-click="delete(x.id)">Delete</a>
+                            </div>
                           </div>
                         </li>
                         <li>
