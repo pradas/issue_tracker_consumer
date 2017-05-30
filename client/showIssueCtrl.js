@@ -71,6 +71,12 @@ app.controller('deleteComment', function($scope, $http, $routeParams) {
     };
 });
 
+app.controller('getAttachment', function($scope, $http, $routeParams) {
+    $scope.getAttach = function (attachment_url) {
+            $window.open(attachment_url); 
+        }
+});
+
 app.controller('deleteAttachment', function($scope, $http, $routeParams) {
     $scope.delete = function (attachment_id) {
 
