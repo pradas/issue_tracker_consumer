@@ -98,9 +98,9 @@
                      <tr>
                         <td>{{x.name}}</td>
                         <td>
-                          <div ng-controller="getAttachment"><a href="" ng-click="getAttach(x.attachment)" class="btn btn-primary">Download</a></div>
+                          <div ng-controller="getAttachment"><a href="" ng-click="getAttach(x.attachment)" class="not-grey btn btn-primary">Download</a></div>
                           <div ng-if="x.user == 'Adrián Borrego Martínez'">
-                            <div ng-controller="deleteAttachment"><a href="" ng-click="delete(x.id)" class="btn btn-danger">Delete</a></div>
+                            <div ng-controller="deleteAttachment"><a href="" ng-click="delete(x.id)" class="not-grey btn btn-danger">Delete</a></div>
                           </div>
                         </td>
                      </tr>
@@ -184,7 +184,7 @@
                     <textarea class="form-control" rows="2" ng-model="comment" id="comment-text" placeholder="What do you want to say?"></textarea>
                   </div>
                   <div class="row formfield">
-                    <a href="" button class="btn btn-primary" ng-click="sendComment()">Submit</a>
+                    <a href="" button class="not-grey btn btn-primary" ng-click="sendComment()">Submit</a>
                   </div>
                 </form>
               </div>
