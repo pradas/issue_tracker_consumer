@@ -54,3 +54,7 @@
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+a {color:grey !important;}      /* unvisited link */
+a:hover {color: black !important;}  /* mouse over link */
+a:active {color:#000099  !important;} 
