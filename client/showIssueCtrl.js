@@ -41,37 +41,27 @@ app.controller('openResolveCont', function($scope, $http, $routeParams) {
   
 app.controller('createFile', function($scope, $http, $routeParams) {
 
+    $scope.uploadFile = function(files) {
+    var fd = new FormData();
+    //Take the first selected file
+    fd.append("resume[attachment]", files[0]);
 
-    $scope.send = function () {
-        
-        var data = {
-            text: $scope.comment
-        };
-        
-        var fd = new FormData();
-        fd.append('resume[attachment]', $scope.file);
-    
-        var config = {
-            headers : {
-                'Authorization': '110490905416396817633',
-                'Content-Type': undefined
-            }
-        }
-    
-        $http.post('http://fast-lake-76623.herokuapp.com/api/issues/' + $routeParams.id + '/attachments', fd, config)
-        .success(function (data, status, headers, config) {
+    $http.post('http://fast-lake-76623.herokuapp.com/api/issues/' + $routeParams.id + '/attachments', fd, {
+        withCredentials: true,
+        headers: {'Content-Type': undefined, 'Authorization': '110490905416396817633' },
+        transformRequest: angular.identity
+    }).success(function (data, status, headers, config) {
             console.log(data)
             location.reload(); 
-        })
-        .error(function (data, status, header, config) {
+        }).error(function (data, status, header, config) {
             console.log(data)
             console.log(status)
             $scope.ResponseDetails ="<hr />status: " + status +
                 "<hr />headers: " + header +
                 "<hr />config: " + config;
         });
+
     };
-    
 });
   
   

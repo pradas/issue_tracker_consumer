@@ -199,7 +199,7 @@
             <form ng-controller="createFile">
               <div class="form-group">
                 <label for="">Archivo:</label>
-                <input type="file" ng-model="file">
+                <input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)"/>
               </div>
               <button type="submit" class="btn btn-primary" ng-click="send()">Enviar</button>
               <a class="btn" onclick="$('#attach-form').hide();">Cancel</a>
