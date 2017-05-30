@@ -77,7 +77,7 @@
             <a>
               <span>{{issue.user}}</span>
             </a>
-            created this issue
+            created this issue on {{issue.created_at | date :"dd-MM-yy"}} at {{issue.created_at | date:"HH:mm:ss" }}
           </div>
           <div class="issue-description wiki-content desc-break">
               <p><div ng-if="issue.description == ''">No description provided</div></p>   
