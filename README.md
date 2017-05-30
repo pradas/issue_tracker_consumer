@@ -22,7 +22,7 @@ Equip de desenvolupament:
 * Joan Pagès Esbri
 * Adrián Ruiz Cordón
 
-AngularJS: https://arcane-forest-15035.herokuapp.com/
+AngularJS: http://ancient-cove-80753.herokuapp.com/
 
 RubyOnRails: http://fast-lake-76623.herokuapp.com/
 
