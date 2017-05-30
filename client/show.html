@@ -99,7 +99,7 @@
                      <tr>
                         <td>{{x.name}}</td>
                         <td>
-                          <div ng-controller="getAttachment"><a href="" ng-click="getAttach(x.attachment)" class="not-grey btn btn-primary">Download</a></div>
+                          <div ng-controller="getAttachment"><a href="http://fast-lake-76623.herokuapp.com{{x.attachment}}" target="_blank" class="not-grey btn btn-primary">Download</a></div>
                           <div ng-if="x.user == 'Adrián Borrego Martínez'">
                             <div ng-controller="deleteAttachment"><a href="" ng-click="delete(x.id)" class="not-grey btn btn-danger">Delete</a></div>
                           </div>
