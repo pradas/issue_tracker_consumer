@@ -12,11 +12,13 @@ app.controller('getIssuesCtrl', ['$scope', '$http', '$routeParams', function($sc
         if($routeParams.status!=null) q2 +="&status="+$routeParams.status;
         if($routeParams.priority!=null) q2 +="&priority="+$routeParams.priority;
         if($routeParams.responsible!=null) q2 +="&responsible="+$routeParams.responsible;
-        
+        console.log("Preparan GET issues");
         $http.get("http://fast-lake-76623.herokuapp.com/api/issues?"+q2).then(function(response) {
+           console.log("dins de GET /issues");
            $scope.myData = response.data.issues;
  
         });
+        console.log("GET issues passat");
 
 }]);
 
