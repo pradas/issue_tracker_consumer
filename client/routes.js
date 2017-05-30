@@ -1,5 +1,16 @@
 var mainApp = angular.module("mainApp", ['ngRoute']);
 
+mainApp.controller('navUserName', function($scope, $http, $routeParams) {
+    $http.get("http://fast-lake-76623.herokuapp.com/api/users").then(function(response) {
+    	$scope.navUser = "Guest";
+        response.data.users.forEach(function(element) {
+		    if (element.uid == "110490905416396817633") {
+		    	$scope.navUser = element.name ;
+		    }
+		});
+    });
+});
+
 mainApp.config(function($routeProvider) {
 	$routeProvider
 		.when('/home', {
@@ -11,7 +22,7 @@ mainApp.config(function($routeProvider) {
 			controller: 'getIssuesCtrl'
 		})
 		.when('/edit/:id', {
-			templateUrl: 'create.html',
+			templateUrl: 'edit.html',
 			controller: 'showIssueCtrl'
 		})
 		.when('/issues/:id', {

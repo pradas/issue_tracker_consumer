@@ -18,11 +18,11 @@ app.controller('showIssueCtrl', ['$scope', '$http', '$routeParams', function($sc
 }]); 
 
   
-app.controller('createComment', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+app.controller('createComment', function($scope, $http, $routeParams) {
 
-$scope.submit = function () {
+$scope.sendComment = function () {
     var data = {
-            text: document.getElementById('comment-text')
+            text: $scope.comment
         };
     
     var config = {
@@ -35,7 +35,7 @@ $scope.submit = function () {
     $http.post('http://fast-lake-76623.herokuapp.com/api/issues/' + $routeParams.id + '/comments', data, config)
     .success(function (data, status, headers, config) {
         console.log(data)
-        window.location.href = '#/issues/' + $routeParams.id;
+        location.reload(); 
     })
     .error(function (data, status, header, config) {
         console.log(data)
@@ -44,7 +44,70 @@ $scope.submit = function () {
             "<hr />config: " + config;
     });
 };
-}]);
+});
+
+
+app.controller('deleteComment', function($scope, $http, $routeParams) {
+    $scope.delete = function (comment_id) {
+
+        var config = {
+            headers : {
+                'Authorization': '110490905416396817633',
+                'Content-Type': 'application/json'
+            }
+        }
+        
+        $http.delete('http://fast-lake-76623.herokuapp.com/api/issues/' + $routeParams.id + '/comments/' + comment_id, config)
+        .success(function (data, status, headers, config) {
+            console.log(data);
+            location.reload(); 
+        })
+        .error(function (data, status, header, config) {
+            console.log(data);
+            $scope.ResponseDetails ="<hr />status: " + status +
+                "<hr />headers: " + header +
+                "<hr />config: " + config;
+        });
+    };
+});
+
+
+app.controller('editForm', function($scope, $http, $routeParams) {
+    $scope.editForm = function (id) {
+        $('.comment-'+id).toggle();
+    };
+});
+
+app.controller('editComment', function($scope, $http, $routeParams) {
+    $scope.editComment = function (id) {
+        var data = {
+            text: $scope.commentToSend
+        };
+        
+        var config = {
+            headers : {
+                'Authorization': '110490905416396817633',
+                'Content-Type': 'application/json'
+            }
+        }
+    
+        $http.put('http://fast-lake-76623.herokuapp.com/api/issues/' + $routeParams.id + '/comments/' + id, data, config)
+        .success(function (data, status, headers, config) {
+            console.log(data);
+            location.reload(); 
+        })
+        .error(function (data, status, header, config) {
+            console.log(data);
+            $scope.ResponseDetails ="<hr />status: " + status +
+                "<hr />headers: " + header +
+                "<hr />config: " + config;
+        });    
+        
+    };
+});
+
+
+
     
 app.controller('voteIssue', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
 
@@ -138,10 +201,24 @@ $scope.submit = function () {
 };
 }]);
 
-app.controller('editIssue', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+app.controller('editIssue', function($scope, $http, $routeParams) {
     
-    $http.get("http://fast-lake-76623.herokuapp.com/api/issues" + $routeParams.id).then(function(response) {
-        $scope = response.data;
+    $http.get("http://fast-lake-76623.herokuapp.com/api/users").then(function(response) {
+        $scope.users = response.data.users;
+    });
+    
+    var config = {
+        headers : {
+            'Authorization': '110490905416396817633',
+            'Content-Type': 'application/json'
+        }
+    }
+    $http.get("http://fast-lake-76623.herokuapp.com/api/issues/" + $routeParams.id, config).then(function(response) {
+        $scope.title = response.data.title;
+        $scope.description = response.data.description;
+        $scope.userissue = response.data.user_id;
+        $scope.kind = response.data.kind;
+        $scope.prior = response.data.priority;
     });
 
     $scope.submit = function () {
@@ -160,19 +237,22 @@ app.controller('editIssue', ['$scope', '$http', '$routeParams', function($scope,
             }
         }
     
-        $http.post('http://fast-lake-76623.herokuapp.com/api/issues/' + $routeParams.id + '/votes', config)
-        .success(function (status, headers, config) {
-            window.location.href = '/issues/' + $routeParams.id;
+        $http.put('http://fast-lake-76623.herokuapp.com/api/issues/' + $routeParams.id, data, config)
+        .success(function (data, status, headers, config) {
+            console.log(data);
+            window.location.href = '#/issues/' + $routeParams.id;
         })
-        .error(function (status, header, config) {
+        .error(function (data, status, header, config) {
+            console.log(data);
             $scope.ResponseDetails ="<hr />status: " + status +
                 "<hr />headers: " + header +
                 "<hr />config: " + config;
         });
     };
-}]);
+});
 
-app.controller('deleteIssue', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+app.controller('deleteIssue', function($scope, $http, $routeParams) {
+    $scope.delete = function () {
 
         var config = {
             headers : {
@@ -181,13 +261,16 @@ app.controller('deleteIssue', ['$scope', '$http', '$routeParams', function($scop
             }
         }
     
-        $http.post('http://fast-lake-76623.herokuapp.com/api/issues/' + $routeParams.id, config)
-        .success(function (status, headers, config) {
+        $http.delete('http://fast-lake-76623.herokuapp.com/api/issues/' + $routeParams.id, config)
+        .success(function (data, status, headers, config) {
+            console.log(data);
             window.location.href = '/';
         })
-        .error(function (status, header, config) {
+        .error(function (data, status, header, config) {
+            console.log(data);
             $scope.ResponseDetails ="<hr />status: " + status +
                 "<hr />headers: " + header +
                 "<hr />config: " + config;
         });
-}]);
+    };
+});

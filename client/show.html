@@ -4,27 +4,11 @@
     <title>Chat Example</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    
-    <link rel="stylesheet" href="css/index.css">
-
-    <!-- Angular library -->
-	  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
-	  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
-	  <script type="text/javascript" src="routes.js"></script>
-	  <script type="text/javascript" src="showIssueCtrl.js"></script>
-
-    
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
   </head>
 
 
   
-  <body ng-controller='mainController'>
+  <body>
     <div class="container">
       <div class="row">
         <div class="col-md-10 col-sm-10">
@@ -75,7 +59,7 @@
             <span class="caret"></span></button>
              <div class="dropdown-content">
               <a href="#">Attach files</a>
-              <div ng-controller="deleteIssue"><a href="#delete/{{issue.id}}" ng-click="submit()">Delete</a></div>
+              <div ng-controller="deleteIssue"><a href="" ng-click="delete()">Delete</a></div>
             </div>
           </div>
         </div>
@@ -126,7 +110,7 @@
           <!--Comentarios -->
           <hr>
           <div id="issues-comments-container">
-          <h3>Comments (nComments)</h3>
+          <h3>Comments ({{issue.comments.length}})</h3>
           <div id="issues-comments" ng-repeat="x in issue.comments">
               <div class="row issue-comment comment">
                 <div class="col-xs-1">
@@ -137,18 +121,29 @@
                     <p>
                       <b>{{x.user}}</b>
                     </p>
-                    <div class="comment-<%= comment.id %>">
+                    <div class="comment-{{x.id}}">
                       <p>
                         {{x.text}}
                       </p>
+                    </div>
+                    <div class="col-xs-7 comment-{{x.id}}" hidden>
+                      <form ng-controller="editComment">
+                          <div class = "row formfield">
+                              <textarea ng-model="commentToSend" class="form-control comment">{{x.text}}</textarea>
+                          </div>
+                          
+                          <div class="row formfield">
+                            <button class="btn btn-primary bold-text" ng-click="editComment(x.id)">Editar</button>
+                          </div>
+                      </form>
                     </div>
                   </div>
                     <div class="row">
                       <ul class="list-inline">
                           <li>
-                            <a href="#edit" class="edit-comment-link" onclick="$('.comment-<%= comment.id %>').toggle();">
-                              Edit
-                            </a>
+                            <div ng-controller="editForm">
+                              <a href="" class="edit-comment-link" ng-click="editForm(x.id)">Edit</a>
+                            </div>
                           </li>
                         <li>
                           <a class="comment-pin-link" href="#comment-pin">
@@ -156,7 +151,9 @@
                           </a>
                         </li>
                         <li>
-                          <a href="/issues/<%= @issue.id.to_s %>/comments/<%= comment.id.to_s %>" onclick="confirm('Are you sure that you wish to delete this comment?')">Delete</a>
+                          <div ng-controller="deleteComment">
+                            <a href="" ng-click="delete(x.id)">Delete</a>
+                          </div>
                         </li>
                         <li>
                           <a>
@@ -174,13 +171,15 @@
               <div class="col-xs-1">
                 <img src="https://bitbucket.org/account/pradas/avatar/32/?ts=1492956548" height="38" width="38" alt="">
               </div>
-              <div class="col-xs-7" ng-controller="createComment">
-                <div class = "row formfield">
-                  <textarea class="form-control" rows="2" ng-model="comment" id="comment-text" placeholder="What do you want to say?"></textarea>
-                </div>
-                <div class="row formfield">
-                  <a href="#createcomment/{{issue.id}}" button class="btn btn-primary" ng-click="submit()">Submit</a>
-                </div>
+              <div class="col-xs-7">
+                <form ng-controller="createComment">
+                  <div class = "row formfield">
+                    <textarea class="form-control" rows="2" ng-model="comment" id="comment-text" placeholder="What do you want to say?"></textarea>
+                  </div>
+                  <div class="row formfield">
+                    <a href="" button class="btn btn-primary" ng-click="sendComment()">Submit</a>
+                  </div>
+                </form>
               </div>
             </div>
         </div>  
